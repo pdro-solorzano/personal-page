@@ -4,13 +4,21 @@ export const darkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#4e6386",
+      main: "#666666",
+    },
+    text: {
+      main: "#080e18",
     },
     secondary: {
       main: "#FCA311",
     },
     divider: "#E5E5E5",
+    background: {
+      default: "#080e18",
+      paper: "#080e1a",
+    },
   },
+  spacing: 8,
 });
 
 export default darkTheme;
