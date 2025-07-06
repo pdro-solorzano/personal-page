@@ -6,68 +6,166 @@ import {
   Box,
   Menu,
   Button,
-  Tooltip,
-  Avatar,
   MenuItem,
   IconButton,
+  useTheme,
 } from "@mui/material";
-import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
+import type { Theme } from "@emotion/react";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ["Home", "Portfolio", "Contact"];
 
 function Navbar() {
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const theme = useTheme();
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+
+  const handleOpenNavMenu = (e: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(e.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+    <>
+      {/* TODO: Now both elements render, do a conditional render to prevent both elements in DOM */}
+      {/* Navbar in viewport md */}
+      <BigNavbar theme={theme} handleCloseNavMenu={handleCloseNavMenu} />
+      {/* Navbar in viewport less than md */}
+      <SmallNavbar
+        theme={theme}
+        handleOpenNavMenu={handleOpenNavMenu}
+        handleCloseNavMenu={handleCloseNavMenu}
+        anchorElNav={anchorElNav}
+      />
+    </>
+  );
+}
+
+function BigNavbar({
+  theme,
+  handleCloseNavMenu,
+}: {
+  theme: Theme;
+  handleCloseNavMenu: () => void;
+}) {
+  return (
+    <AppBar
+      position="fixed"
+      sx={{
+        mt: 3,
+        background: "none",
+        boxShadow: 0,
+        display: { xs: "none", md: "flex" },
+      }}
+    >
+      <Container maxWidth="lg" disableGutters sx={{ px: 10 }}>
+        <Toolbar
+          disableGutters
+          sx={{
+            flexWrap: "nowrap",
+            justifyContent: "flex-start",
+            alignItems: "center",
+            borderBottom: 1,
+            borderColor: "secondary.main",
+            gap: 8,
+          }}
+        >
           <Typography
             variant="h6"
-            noWrap
+            color={theme.palette.primary.contrastText}
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
+              fontFamily: "Roboto Condensed",
+              fontWeight: 300,
               textDecoration: "none",
+              fontSize: 20,
             }}
           >
-            LOGO
+            Pedro Solorzano
           </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              flexWrap: "nowrap",
+              flexGrow: 1,
+              gap: 5,
+            }}
+          >
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ color: "white", display: "block" }}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+}
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+function SmallNavbar({
+  theme,
+  handleOpenNavMenu,
+  handleCloseNavMenu,
+  anchorElNav,
+}: {
+  theme: Theme;
+  handleOpenNavMenu: (event: React.MouseEvent<HTMLElement>) => void;
+  handleCloseNavMenu: () => void;
+  anchorElNav: null | HTMLElement;
+}) {
+  return (
+    <AppBar
+      position="sticky"
+      sx={{
+        background: "none",
+        backgroundColor: "secondary.main",
+        boxShadow: 0,
+        display: { xs: "flex", md: "none" },
+      }}
+    >
+      <Container maxWidth="md" disableGutters sx={{ px: 1 }}>
+        <Toolbar
+          disableGutters
+          sx={{
+            flexWrap: "nowrap",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            variant="h6"
+            color={theme.palette.secondary.contrastText}
+            component="a"
+            href="/"
+            sx={{
+              fontFamily: "Roboto Condensed",
+              fontWeight: 300,
+              textDecoration: "none",
+              fontSize: 16,
+            }}
+          >
+            Pedro Solorzano
+          </Typography>
+          <Box>
             <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              sx={{ color: "secondary.contrastText" }}
             >
               <MenuIcon />
             </IconButton>
@@ -85,72 +183,10 @@ function Navbar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: "block", md: "none" } }}
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography sx={{ textAlign: "center" }}>{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: "center" }}>
-                    {setting}
-                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -160,4 +196,5 @@ function Navbar() {
     </AppBar>
   );
 }
+
 export { Navbar };
