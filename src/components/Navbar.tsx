@@ -8,17 +8,13 @@ import {
   Button,
   MenuItem,
   IconButton,
-  useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
-import type { Theme } from "@emotion/react";
 
 const pages = ["Home", "Portfolio", "Contact"];
 
 function Navbar() {
-  const theme = useTheme();
-
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (e: React.MouseEvent<HTMLElement>) => {
@@ -33,10 +29,9 @@ function Navbar() {
     <>
       {/* TODO: Now both elements render, do a conditional render to prevent both elements in DOM */}
       {/* Navbar in viewport md */}
-      <BigNavbar theme={theme} handleCloseNavMenu={handleCloseNavMenu} />
+      <BigNavbar handleCloseNavMenu={handleCloseNavMenu} />
       {/* Navbar in viewport less than md */}
       <SmallNavbar
-        theme={theme}
         handleOpenNavMenu={handleOpenNavMenu}
         handleCloseNavMenu={handleCloseNavMenu}
         anchorElNav={anchorElNav}
@@ -45,13 +40,7 @@ function Navbar() {
   );
 }
 
-function BigNavbar({
-  theme,
-  handleCloseNavMenu,
-}: {
-  theme: Theme;
-  handleCloseNavMenu: () => void;
-}) {
+function BigNavbar({ handleCloseNavMenu }: { handleCloseNavMenu: () => void }) {
   return (
     <AppBar
       position="fixed"
@@ -76,7 +65,7 @@ function BigNavbar({
         >
           <Typography
             variant="h6"
-            color={theme.palette.primary.contrastText}
+            color="textPrimary"
             component="a"
             href="/"
             sx={{
@@ -115,12 +104,10 @@ function BigNavbar({
 }
 
 function SmallNavbar({
-  theme,
   handleOpenNavMenu,
   handleCloseNavMenu,
   anchorElNav,
 }: {
-  theme: Theme;
   handleOpenNavMenu: (event: React.MouseEvent<HTMLElement>) => void;
   handleCloseNavMenu: () => void;
   anchorElNav: null | HTMLElement;
@@ -146,7 +133,7 @@ function SmallNavbar({
         >
           <Typography
             variant="h6"
-            color={theme.palette.secondary.contrastText}
+            color="secondary.contrastText"
             component="a"
             href="/"
             sx={{
