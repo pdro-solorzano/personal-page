@@ -1,7 +1,8 @@
 import { ThemeProvider } from "@mui/material/styles";
-import { Navbar } from "./components/Navbar";
 import darkTheme from "./config/Theme";
 import { CssBaseline } from "@mui/material";
+import { Home } from "@mui/icons-material";
+import { Navbar } from "./components/Navbar";
 // import "./styles/App.css";
 
 function App() {
