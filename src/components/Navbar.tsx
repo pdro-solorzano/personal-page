@@ -58,7 +58,7 @@ function BigNavbar({ handleCloseNavMenu }: { handleCloseNavMenu: () => void }) {
             flexWrap: "nowrap",
             justifyContent: "flex-start",
             alignItems: "center",
-            borderBottom: 1,
+            borderBottom: 2,
             borderColor: "secondary.main",
             gap: 8,
           }}
