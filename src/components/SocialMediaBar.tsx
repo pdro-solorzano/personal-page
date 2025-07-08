@@ -4,7 +4,7 @@ import { SocialMediaButton } from "./SocialMediaButton";
 
 function SocialMediaBar() {
   return (
-    <Stack direction="row" spacing={1}>
+    <Stack direction="row" spacing={1} display={{ xs: "none", md: "flex" }}>
       <SocialMediaButton
         link="https://linkedin.com/in/pedro-solorzano-gomez"
         color="#0a66c2"
