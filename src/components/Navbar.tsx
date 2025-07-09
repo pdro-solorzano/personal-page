@@ -44,6 +44,7 @@ function BigNavbar({ handleCloseNavMenu }: { handleCloseNavMenu: () => void }) {
   return (
     <AppBar
       position="fixed"
+      color="transparent"
       sx={{
         mt: 3,
         background: "none",
@@ -61,6 +62,7 @@ function BigNavbar({ handleCloseNavMenu }: { handleCloseNavMenu: () => void }) {
             borderBottom: 2,
             borderColor: "secondary.main",
             gap: 8,
+            backdropFilter: "blur(8px)",
           }}
         >
           <Typography
