@@ -1,18 +1,9 @@
-import type React from "react";
 import { Avatar } from "@mui/material";
-// TODO: handle type of rgb color in utils
+import type { SocialMedia } from "../models/models";
 
-function SocialMediaButton({
-  link,
-  color,
-  children,
-}: {
-  link: string;
-  color: string;
-  children: React.ReactNode;
-}) {
+function SocialMediaButton({ link, color, children }: SocialMedia) {
   return (
-    <a href={link}>
+    <a href={link.toString()}>
       <Avatar sx={{ bgcolor: color }}>{children}</Avatar>
     </a>
   );

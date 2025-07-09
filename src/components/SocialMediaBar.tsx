@@ -6,19 +6,19 @@ function SocialMediaBar() {
   return (
     <Stack direction="row" spacing={1} display={{ xs: "none", md: "flex" }}>
       <SocialMediaButton
-        link="https://linkedin.com/in/pedro-solorzano-gomez"
+        link={new URL("https://linkedin.com/in/pedro-solorzano-gomez")}
         color="#0a66c2"
       >
         <LinkedIn color="action" />
       </SocialMediaButton>
       <SocialMediaButton
-        link="https://github.com/pdro-solorzano"
+        link={new URL("https://github.com/pdro-solorzano")}
         color="#6e5494"
       >
         <GitHub color="action" />
       </SocialMediaButton>
       <SocialMediaButton
-        link="mailto:pdro_solorzano@outlook.com"
+        link={new URL("mailto:pdro_solorzano@outlook.com")}
         color="#f65314"
       >
         <Email color="action" />
