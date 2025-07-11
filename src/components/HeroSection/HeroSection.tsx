@@ -1,11 +1,13 @@
 import { Container, Grid, Typography } from "@mui/material";
-import { SocialMediaBar } from "./SocialMediaBar";
+import { SocialMediaBar } from "../SocialMediaBar";
 
-function Hero() {
+function HeroSection() {
   return (
     <Container
       maxWidth="xl"
       disableGutters
+      component="section"
+      id="home"
       sx={{
         backgroundImage:
           "radial-gradient(circle,rgba(42, 46, 56, 1) 0%, rgba(8, 14, 24, 1) 100%) ",
@@ -22,7 +24,7 @@ function Hero() {
         sx={{
           mx: { xs: 0, md: "auto" },
           px: { xs: 2.5, md: 10 },
-          pt: { xs: 0, md: 15 },
+          mt: { xs: 0, md: 15 },
         }}
       >
         <Grid size={{ xs: 12, md: 5 }}>
@@ -87,4 +89,4 @@ function Hero() {
   );
 }
 
-export { Hero };
+export { HeroSection };
