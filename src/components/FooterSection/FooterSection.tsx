@@ -2,7 +2,12 @@ import { Container, Typography, Grid } from "@mui/material";
 
 function FooterSection() {
   return (
-    <Container maxWidth="xl" disableGutters sx={{ bgcolor: "secondary.main" }}>
+    <Container
+      maxWidth="xl"
+      component="section"
+      disableGutters
+      sx={{ bgcolor: "secondary.main" }}
+    >
       <Grid
         container
         spacing={0.5}

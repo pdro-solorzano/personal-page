@@ -4,7 +4,7 @@ import { SocialMediaBar } from "../SocialMediaBar";
 
 function ContactSection() {
   return (
-    <Container maxWidth="xl" disableGutters>
+    <Container maxWidth="xl" disableGutters component="section" id="contact">
       <Container
         maxWidth="lg"
         disableGutters
