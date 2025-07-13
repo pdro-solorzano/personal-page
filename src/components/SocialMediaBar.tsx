@@ -2,7 +2,8 @@ import { Stack } from "@mui/material";
 import { LinkedIn, GitHub, Email } from "@mui/icons-material";
 import { SocialMediaButton } from "./SocialMediaButton";
 
-function SocialMediaBar({ display }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function SocialMediaBar({ display }: { display?: any }) {
   return (
     <Stack direction="row" spacing={1} display={display}>
       <SocialMediaButton
