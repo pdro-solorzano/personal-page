@@ -2,9 +2,9 @@ import { Stack } from "@mui/material";
 import { LinkedIn, GitHub, Email } from "@mui/icons-material";
 import { SocialMediaButton } from "./SocialMediaButton";
 
-function SocialMediaBar() {
+function SocialMediaBar({ display }) {
   return (
-    <Stack direction="row" spacing={1} display={{ xs: "none", md: "flex" }}>
+    <Stack direction="row" spacing={1} display={display}>
       <SocialMediaButton
         link={new URL("https://linkedin.com/in/pedro-solorzano-gomez")}
         color="#0a66c2"

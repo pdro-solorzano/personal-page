@@ -80,9 +80,10 @@ function HeroSection() {
             </Typography>{" "}
             to move fast with confidence.
           </Typography>
+          {/* download CV button */}
         </Grid>
         <Grid size={{ xs: 12 }}>
-          <SocialMediaBar />
+          <SocialMediaBar display={{ xs: "none", md: "flex" }} />
         </Grid>
       </Grid>
     </Container>

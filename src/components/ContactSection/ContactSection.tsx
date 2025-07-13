@@ -41,13 +41,14 @@ function ContactSection() {
             <Typography
               variant="body2"
               color="textSecondary"
-              sx={{ mb: { xs: 0, md: 3 }, fontWeight: "normal" }}
+              sx={{ mb: { xs: 2, md: 3 }, fontWeight: "normal" }}
             >
-              I love building clean, scalable code that solves real user
-              problems. With a strong focus on modern frontend development using
-              to move fast with confidence.
+              I’m always open to exciting opportunities where I can contribute
+              to great teams and continue growing as a developer. If you’re
+              hiring or have a project in mind, feel free to reach out — I’d
+              love to connect!
             </Typography>
-            <SocialMediaBar />
+            <SocialMediaBar display={{}} />
           </Grid>
           <Grid
             size={{ xs: 0, md: 2 }}
@@ -79,7 +80,7 @@ function ContactSection() {
             <Stack direction="row" spacing={1} sx={{ mb: { sx: 1, md: 1 } }}>
               <LocationOn color="secondary" />
               <Typography variant="body2" color="textSecondary">
-                Watauga, TX 76148, USA
+                Texas, USA
               </Typography>
             </Stack>
           </Grid>
