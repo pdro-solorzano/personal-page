@@ -7,7 +7,7 @@ import {
   Typography,
   Chip,
 } from "@mui/material";
-import type { Practice } from "../models/models";
+import type { Practice } from "../../models/models";
 
 type Props = {
   practice: Practice;
