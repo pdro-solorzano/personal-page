@@ -12,7 +12,11 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 
-const pages = ["Home", "Portfolio", "Contact"];
+const pages = [
+  { displayText: "Home", url: "#home" },
+  { displayText: "Portfolio", url: "#portfolio" },
+  { displayText: "Contact", url: "#contact" },
+];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -29,7 +33,7 @@ function Navbar() {
     <>
       {/* TODO: Now both elements render, do a conditional render to prevent both elements in DOM */}
       {/* Navbar in viewport md */}
-      <BigNavbar handleCloseNavMenu={handleCloseNavMenu} />
+      <BigNavbar />
       {/* Navbar in viewport less than md */}
       <SmallNavbar
         handleOpenNavMenu={handleOpenNavMenu}
@@ -40,7 +44,7 @@ function Navbar() {
   );
 }
 
-function BigNavbar({ handleCloseNavMenu }: { handleCloseNavMenu: () => void }) {
+function BigNavbar() {
   return (
     <AppBar
       position="fixed"
@@ -89,13 +93,14 @@ function BigNavbar({ handleCloseNavMenu }: { handleCloseNavMenu: () => void }) {
               gap: 5,
             }}
           >
-            {pages.map((page) => (
+            {pages.map((page, i) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={i}
+                component="a"
+                href={page.url}
                 sx={{ color: "white", display: "block" }}
               >
-                {page}
+                {page.displayText}
               </Button>
             ))}
           </Box>
@@ -173,9 +178,16 @@ function SmallNavbar({
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: "center" }}>{page}</Typography>
+              {pages.map((page, i) => (
+                <MenuItem
+                  key={i}
+                  component="a"
+                  href={page.url}
+                  onClick={handleCloseNavMenu}
+                >
+                  <Typography sx={{ textAlign: "center" }}>
+                    {page.displayText}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
