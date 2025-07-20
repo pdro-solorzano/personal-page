@@ -73,7 +73,7 @@ function BigNavbar() {
             variant="h6"
             color="textPrimary"
             component="a"
-            href="/"
+            href="/personal-page/"
             sx={{
               fontFamily: "Roboto Condensed",
               fontWeight: 300,
