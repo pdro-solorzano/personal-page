@@ -50,14 +50,23 @@ function PracticeContainer({ practice }: Props) {
             </Typography>
           </CardContent>
           <CardActions
-            sx={{ display: "flex", justifyContent: "center", gap: "8px" }}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "8px",
+              flexWrap: "wrap",
+            }}
           >
             {practice.techTags.map((el, i) => (
               <Chip
                 key={i}
                 label={el.name}
                 size="small"
-                sx={{ background: el.color, color: "black" }}
+                sx={{
+                  background: el.color,
+                  color: "black",
+                  fontSize: { xs: 9, md: 12 },
+                }}
               />
             ))}
           </CardActions>
