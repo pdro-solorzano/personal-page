@@ -1,4 +1,3 @@
-import { SvgIcon } from "@mui/material";
 import { ContactSection } from "../components/ContactSection";
 import { FooterSection } from "../components/FooterSection";
 import { HeroSection } from "../components/HeroSection";
