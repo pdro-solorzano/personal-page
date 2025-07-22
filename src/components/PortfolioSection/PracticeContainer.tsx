@@ -16,7 +16,7 @@ type Props = {
 function PracticeContainer({ practice }: Props) {
   return (
     <Card sx={{ textAlign: "center" }}>
-      <CardActionArea>
+      <CardActionArea sx={{ py: 2 }}>
         <a href={practice.url?.toString()} style={{ textDecoration: "none" }}>
           <CardMedia
             component="div"
